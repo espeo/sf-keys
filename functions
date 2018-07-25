@@ -1,5 +1,10 @@
 gpg_backup_key() {
-	echo ""
+	if [ -f /etc/local/.config/gpg-backup.key ]; then
+		keyname=`cat /etc/local/.config/gpg-backup.key`
+		if [ "$keyname" != "" ] && [ -f /opt/farm/ext/keys/gpg/$keyname.pub ]; then
+			echo $keyname
+		fi
+	fi
 }
 
 ssh_management_key_raw_filename() {
