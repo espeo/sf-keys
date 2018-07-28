@@ -1,6 +1,6 @@
 gpg_backup_key() {
-	if [ -f /etc/local/.config/gpg-backup.key ]; then
-		keyname=`cat /etc/local/.config/gpg-backup.key`
+	if [ -s /etc/local/.config/backup.gpgkey ]; then
+		keyname=`cat /etc/local/.config/backup.gpgkey`
 		if [ "$keyname" != "" ] && [ -f /opt/farm/ext/keys/gpg/$keyname.pub ]; then
 			echo $keyname
 		fi
