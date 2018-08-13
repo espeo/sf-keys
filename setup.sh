@@ -1,12 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 . /opt/farm/scripts/init
-. /opt/farm/scripts/functions.custom
-. /opt/farm/ext/keys/functions
-
 
 
 echo "preparing ssh key"
-FULLKEY=`ssh_management_key_string $HOST`
+FULLKEY=`/opt/farm/ext/keys/get-ssh-management-key-content.sh $HOST`
 
 if [ ! -f /root/.ssh/authorized_keys ] || ! grep -q "$FULLKEY" /root/.ssh/authorized_keys; then
 	echo "setting up root ssh key"
@@ -14,9 +11,11 @@ if [ ! -f /root/.ssh/authorized_keys ] || ! grep -q "$FULLKEY" /root/.ssh/author
 	echo "$FULLKEY" >>/root/.ssh/authorized_keys
 fi
 
+
 echo "checking custom system groups"
 /opt/farm/ext/passwd-utils/create-group.sh espeodev
 /opt/farm/ext/passwd-utils/create-group.sh espeoadm
+
 
 if [ "$OSVER" = "ubuntu-trusty" ] || [ "$OSVER" = "ubuntu-xenial" ] || [ "$OSVER" = "ubuntu-bionic" ]; then
 	dt=`date +"%Y.%m.%d %H:%M:%S"`
