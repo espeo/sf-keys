@@ -12,6 +12,7 @@ if [ ! -f /root/.ssh/authorized_keys ] || ! grep -q "$FULLKEY" /root/.ssh/author
 fi
 
 
+/opt/farm/scripts/setup/extension.sh sf-passwd-utils
 echo "checking custom system groups"
 /opt/farm/ext/passwd-utils/create-group.sh espeodev
 /opt/farm/ext/passwd-utils/create-group.sh espeoadm
