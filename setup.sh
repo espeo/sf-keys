@@ -18,6 +18,9 @@ echo "checking custom system groups"
 /opt/farm/ext/passwd-utils/create-group.sh espeoadm
 
 
+/opt/farm/scripts/setup/extension.sh sf-mc-black
+
+
 if [ "$OSVER" = "ubuntu-trusty" ] || [ "$OSVER" = "ubuntu-xenial" ] || [ "$OSVER" = "ubuntu-bionic" ]; then
 	dt=`date +"%Y.%m.%d %H:%M:%S"`
 	echo "configuring /etc/sudoers.d/espeo file"
