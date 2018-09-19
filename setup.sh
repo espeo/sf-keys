@@ -19,6 +19,9 @@ echo "checking custom system groups"
 
 
 /opt/farm/scripts/setup/extension.sh sf-mc-black
+/opt/farm/scripts/setup/extension.sh sf-db-tools
+/opt/farm/scripts/setup/extension.sh sf-app-deploy
+/opt/farm/scripts/setup/extension.sh sf-circle
 
 
 if [ "$OSVER" = "ubuntu-trusty" ] || [ "$OSVER" = "ubuntu-xenial" ] || [ "$OSVER" = "ubuntu-bionic" ]; then
