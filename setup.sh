@@ -57,6 +57,6 @@ if [ "$OSVER" = "ubuntu-trusty" ] || [ "$OSVER" = "ubuntu-xenial" ] || [ "$OSVER
 	dt=`date +"%Y.%m.%d %H:%M:%S"`
 	echo "configuring /etc/sudoers.d/espeo file"
 	echo "# Espeo Software custom sudoers list, last generated at $dt
-%espeodev ALL=(root) NOPASSWD: /opt/farm/ext/cloud-client-ec2/utils/setup-account.sh
+%espeoadm ALL=(root) NOPASSWD: ALL
 " >/etc/sudoers.d/espeo
 fi
