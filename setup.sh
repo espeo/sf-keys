@@ -3,6 +3,20 @@
 
 /opt/farm/scripts/setup/extension.sh sf-passwd-utils
 
+echo "checking custom system groups"
+/opt/farm/ext/passwd-utils/create-group.sh espeodev
+/opt/farm/ext/passwd-utils/create-group.sh espeoadm
+
+
+ADM="tklim fchmarzynski durbanski burbaniak tliberski"
+if [ ! -s /etc/local/.config/devops.disable ]; then
+	for user in $ADM; do
+		/opt/farm/ext/passwd-utils/create-user.sh $user $user
+		/opt/farm/ext/passwd-utils/add-groups.sh $user espeoadm adm docker www-data circleci jenkins
+	done
+fi
+
+
 addkey="/opt/farm/ext/passwd-utils/add-key.sh"
 key=`/opt/farm/ext/keys/get-ssh-management-key-content.sh $HOST`
 $addkey root inline "$key"
@@ -42,10 +56,6 @@ $addkey tklim           inline "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtsKgCD7DH
 $addkey ttomalak        inline "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVRTIyF5WT1XkBSWxoRHo2Qo95ZPCH7t6Rpg0ziuionSRjM8IgGfjJVBBaRmTnY2c/+/OliO+Nr6hqhGt+YM6DZ5dZCBwEptU51M43VUhKBFQQQ6ee/Osi8o5xMszy8/Quxd8HSL0Wd5dh7wXp46gvLVwiEmvaSKheVhLaQPauDTWIiU8au2xqRcY1x+f/c17meZ76vMhV2D1YIuMvSNLHTW+tTutEsH+XHPSDCCnAS9hKQ+fEsirG2kG8bbwrh155RbnDNTh6nEXkQfQNawu44cX5xpTJy5+PXJEn6CK0r7Ojzj1j3QDd4ChSYmIFkzZ/O48JznetJZ1ob0+gvCQ1 tomasz.tomalak@espeo.eu"
 $addkey twysocki        inline "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCuOp1rdAefeKW1Xh6fCl15iWx1cZlDrhpEHbXpeGl7VAuzg6DpnNZBb+AKN4ZcakQVJQdpckjvquuY78VYsFA1Zp1+dFkh1oTp/wvdf+XNKzmohe7WNVe1bZEpSdEiHEq10s5+5j5sJ/Lhp07kHS1xc56R2GmiOo0sxiwSY97r1gsRC3BXeTiRwRxRI7n7SXDde1t26Ou91rBHTlgASNILytCI3ukE8VKgAcfFTZhajHolecPVtNKhPjcSkfot35UhInPlAPVB8BLGJ20oVLAo6Y8BdPFMmd+Iwuyz61wZteKDg1WLJj8r6SoSDU+S3YgSiSOrEBNWv2KQXmNJd0J7BD2gJDc4CK2MSM58KfAamj7Inf/qCRLcRhpN87X5K8A+NW2H6ATSKF+Ls5TL2Ep4LxMq26nib0w80J/frABMxfHkp9Dv0LlYBKqXG/Ifj0K+2wXsC8kVaDzlLT2SKCE77LgidZKCljbTXnWB1IH6Pe7IEHREG0tJRV7O5DP/2hWDFQRzJCxZtqN3ZX9+gFD4Z1tvndaeHviCPAg9gEaVfp6Th+fFO73UoJo3+23q/cXALB9wevksL+UR5COpiCgTFIulOf0ulL5pCXuZSRuWR5R2EQZlrsdaZ/2bTWkIfyAqiO/Iz4uAWj7lOwncMtbYRU7jV6iGR9OfeYbgsavvzw== tomasz.wysocki@espeo.eu"
 
-
-echo "checking custom system groups"
-/opt/farm/ext/passwd-utils/create-group.sh espeodev
-/opt/farm/ext/passwd-utils/create-group.sh espeoadm
 
 /opt/farm/scripts/setup/extension.sh sf-mc-black
 /opt/farm/scripts/setup/extension.sh sf-db-tools
