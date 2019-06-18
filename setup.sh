@@ -59,7 +59,10 @@ $addkey twysocki        inline "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCuOp1rdAef
 /opt/farm/scripts/setup/extension.sh sf-circle
 
 
-if [ "$OSVER" = "ubuntu-trusty" ] || [ "$OSVER" = "ubuntu-xenial" ] || [ "$OSVER" = "ubuntu-bionic" ]; then
+if  [ "$OSVER" = "ubuntu-trusty" ] || \
+	[ "$OSVER" = "ubuntu-xenial" ] || \
+	[ "$OSVER" = "ubuntu-bionic" ] || \
+	[ "$OSVER" = "debian-stretch" ]; then
 	dt=`date +"%Y.%m.%d %H:%M:%S"`
 	echo "configuring /etc/sudoers.d/espeo file"
 	echo "# Espeo Software custom sudoers list, last generated at $dt
