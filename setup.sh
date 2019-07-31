@@ -61,6 +61,7 @@ $addkey twysocki        inline "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCuOp1rdAef
 if  [ "$OSVER" = "ubuntu-trusty" ] || \
 	[ "$OSVER" = "ubuntu-xenial" ] || \
 	[ "$OSVER" = "ubuntu-bionic" ] || \
+	[ "$OSVER" = "debian-buster" ] || \
 	[ "$OSVER" = "debian-stretch" ]; then
 	dt=`date +"%Y.%m.%d %H:%M:%S"`
 	echo "configuring /etc/sudoers.d/espeo file"
