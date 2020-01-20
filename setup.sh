@@ -18,7 +18,8 @@ key=`/opt/farm/ext/keys/get-ssh-management-key-content.sh $HOST`
 /opt/farm/scripts/setup/extension.sh sf-circle
 
 
-if  [ "$OSVER" = "ubuntu-trusty" ] || \
+if  [ "$OSTYPE" = "amazon" ] || \
+	[ "$OSVER" = "ubuntu-trusty" ] || \
 	[ "$OSVER" = "ubuntu-xenial" ] || \
 	[ "$OSVER" = "ubuntu-bionic" ] || \
 	[ "$OSVER" = "debian-buster" ] || \
