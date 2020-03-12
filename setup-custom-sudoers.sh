@@ -7,9 +7,13 @@ if [ -f /etc/sudoers.d/espeo ] && [ "`which lsattr 2>/dev/null`" != "" ] && [ "`
 fi
 
 if  [ "$OSTYPE" = "amazon" ] || \
+	[ "$OSVER" = "raspbian-jessie" ] || \
+	[ "$OSVER" = "raspbian-buster" ] || \
+	[ "$OSVER" = "raspbian-stretch" ] || \
 	[ "$OSVER" = "ubuntu-trusty" ] || \
 	[ "$OSVER" = "ubuntu-xenial" ] || \
 	[ "$OSVER" = "ubuntu-bionic" ] || \
+	[ "$OSVER" = "debian-jessie" ] || \
 	[ "$OSVER" = "debian-buster" ] || \
 	[ "$OSVER" = "debian-stretch" ]; then
 	dt=`date +"%Y.%m.%d %H:%M:%S"`
