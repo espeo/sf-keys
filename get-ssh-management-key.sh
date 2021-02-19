@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo "/etc/local/.ssh/id_espeo_admin"
+echo "$HOME/.ssh/id_espeo_admin"
